@@ -18,7 +18,7 @@ const build = () => {
     if (err) throw err;
 
     const output = fs.createWriteStream(path)
-    const archive = archiver("tar")
+    const archive = archiver("zip")
 
     output.on("close", () => {
       console.log(archive.pointer() + " total bytes")
