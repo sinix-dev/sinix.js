@@ -1,11 +1,18 @@
 {
   "name": "sinix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "sinix": "./bin/sinix.js"
+  },
   "author": "The Sinix Community",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^5.0.0",
+    "tmp": "^0.2.1"
+  }
 }
