@@ -1,3 +1,4 @@
+/* eslint-disable */
 const all = () => {
   console.info("Get all users")
 }
