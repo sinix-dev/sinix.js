@@ -2,20 +2,18 @@
 
 const fs = require("fs")
 const tmp = require("tmp")
-const path = require("path")
 const archiver = require('archiver')
 
 const [,, ... args] = process.argv
 
-const cwd = process.cwd()
 
 const build = () => {
   if (!fs.existsSync("release")){
-    fs.mkdirSync("release");
+    fs.mkdirSync("release")
   }
 
-  tmp.file((err, path, fd, cleanupCallback) => {
-    if (err) throw err;
+  tmp.file((err, path) => {
+    if (err) throw err
 
     const output = fs.createWriteStream(path)
     const archive = archiver("zip")
@@ -29,14 +27,14 @@ const build = () => {
     })
 
     output.on("end", () => {
-      console.log("Data has been drained");
+      console.log("Data has been drained")
     })
 
     archive.on("warning", (err) => {
       if(err.code === "ENOENT"){
         console.log(err)
       } else {
-        throw err;
+        throw err
       }
     })
 
@@ -54,5 +52,5 @@ const build = () => {
 }
 
 switch(args[0]){
-  case "build": build(); break;
+case "build": build(); break
 }
