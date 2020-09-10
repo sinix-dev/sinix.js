@@ -51,6 +51,24 @@ const build = () => {
   })
 }
 
+const init = () => {
+  const configObj = {
+    "distDir": "dist/"
+  }
+
+  const config = JSON.stringify(configObj, null, 2)
+  const code = `module.exports = ${config}`
+
+  fs.writeFile("sinix.config.js", code, (err) => {
+    if(err){
+      console.log(err)
+    } else {
+      console.log("Initialized Sinix project")
+    }
+  })
+}
+
 switch(args[0]){
 case "build": build(); break
+case "init": init(); break
 }
