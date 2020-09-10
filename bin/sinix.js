@@ -1,28 +1,42 @@
 #!/usr/bin/env node
 
 const fs = require("fs")
+const path = require("path")
 const tmp = require("tmp")
 const archiver = require('archiver')
 
 const [,, ... args] = process.argv
+const CONF_PATH = path.join(process.cwd(), "sinix.config.js")
 
 
 const build = () => {
+  if (!fs.existsSync(CONF_PATH)){
+    console.log("Not a Sinix application.")
+    console.log(`
+  $ sinix init # to initialize
+`)
+    return
+  }
+
+  const config = require(CONF_PATH)
+
   if (!fs.existsSync("release")){
     fs.mkdirSync("release")
   }
 
-  tmp.file((err, path) => {
+  tmp.file((err, tmp_path) => {
     if (err) throw err
 
-    const output = fs.createWriteStream(path)
+    const output = fs.createWriteStream(tmp_path)
     const archive = archiver("zip")
 
     output.on("close", () => {
       console.log(archive.pointer() + " total bytes")
 
-      fs.copyFile(path, "release/app.dext", function(err){
-        console.log(err)
+      fs.copyFile(tmp_path, "release/app.dext", function(err){
+        if(err){
+          console.log(err)
+        }
       })
     })
 
@@ -43,7 +57,7 @@ const build = () => {
     })
 
     archive.pipe(output)
-    archive.glob('**', {
+    archive.glob(path.join(config.distDir, "**"), {
       ignore: ['node_modules/**', 'release/**']
     })
 
