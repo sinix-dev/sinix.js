@@ -57,6 +57,12 @@ const build = () => {
     })
 
     archive.pipe(output)
+
+    if (!fs.existsSync(config.distDir)){
+      console.log(`${config.distDir} does not exists`)
+      return
+    }
+
     archive.glob(path.join(config.distDir, "**"), {
       ignore: ['node_modules/**', 'release/**']
     })
