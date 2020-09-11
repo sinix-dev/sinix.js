@@ -7,9 +7,17 @@ const archiver = require('archiver')
 
 const [,, ... args] = process.argv
 const CONF_PATH = path.join(process.cwd(), "sinix.config.js")
+const PACK_PATH = path.join(process.cwd(), "package.json")
 
 
 const build = () => {
+  if (!fs.existsSync(PACK_PATH)){
+    console.log("Not a Node project.")
+    console.log(`
+  $ npm init
+`)
+  }
+
   if (!fs.existsSync(CONF_PATH)){
     console.log("Not a Sinix application.")
     console.log(`
@@ -63,9 +71,26 @@ const build = () => {
       return
     }
 
-    archive.glob(path.join(config.distDir, "**"), {
+    const packageJsonObj = JSON.parse(fs.readFileSync("package.json"))
+
+    const sinixJsonObj = {
+      name: packageJsonObj.name,
+      version: packageJsonObj.version,
+      title: config.title ? config.title : packageJsonObj.name,
+      slug: `${packageJsonObj.name}-v${packageJsonObj.version}`
+    }
+
+    const sinixJson = JSON.stringify(sinixJsonObj, null, 2)
+
+    process.chdir(config.distDir)
+
+    fs.writeFileSync("sinix.manifest.json", sinixJson)
+
+    archive.glob("**", {
       ignore: ['node_modules/**', 'release/**']
     })
+
+    process.chdir("../")
 
     archive.finalize()
   })
