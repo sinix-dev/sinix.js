@@ -48,7 +48,9 @@ const setup = new Promise((resolve, reject) => {
 
       data = JSON.parse(data)
 
-      EVENT_OBJ[data.event_type](data.payload)
+      if(EVENT_OBJ[data.event_type]){
+        EVENT_OBJ[data.event_type](data.payload)
+      }
     }
 
     resolve(socket)
