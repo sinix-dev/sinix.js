@@ -41,7 +41,9 @@ const build = () => {
     output.on("close", () => {
       console.log(archive.pointer() + " total bytes")
 
-      fs.copyFile(tmp_path, "release/app.dext", function(err){
+      const name = sinixJsonObj.slug.replace(" ", "-")
+
+      fs.copyFile(tmp_path, `release/${name}.dext`, function(err){
         if(err){
           console.log(err)
         }
