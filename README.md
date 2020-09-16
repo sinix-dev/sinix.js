@@ -1,5 +1,7 @@
 # Sinix
 
+[Letter to SLoP Contributors](https://github.com/sinix-dev/sinix/wiki/Letter-to-SLoP-Contributors)
+
 Build games for Sinix with [Joystick](https://github.com/sinix-dev/sinix-android) support
 
 ### Installation and Setup
