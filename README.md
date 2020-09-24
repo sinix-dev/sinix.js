@@ -1,5 +1,7 @@
 # Sinix
 
+[![Join the chat at https://gitter.im/sinix-dev/sinix.js](https://badges.gitter.im/sinix-dev/sinix.js.svg)](https://gitter.im/sinix-dev/sinix.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [Letter to SLoP Contributors](https://github.com/sinix-dev/sinix/wiki/Letter-to-SLoP-Contributors)
 
 Build games for Sinix with [Joystick](https://github.com/sinix-dev/sinix-android) support
