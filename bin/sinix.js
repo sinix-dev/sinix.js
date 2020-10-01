@@ -10,7 +10,7 @@ const CONF_PATH = path.join(process.cwd(), "sinix.config.js")
 const PACK_PATH = path.join(process.cwd(), "package.json")
 
 
-const build = () => {
+const pack = () => {
   if (!fs.existsSync(PACK_PATH)){
     console.log("Not a Node project.")
     console.log(`
@@ -116,6 +116,6 @@ const init = () => {
 }
 
 switch(args[0]){
-case "build": build(); break
+case "pack": pack(); break
 case "init": init(); break
 }
