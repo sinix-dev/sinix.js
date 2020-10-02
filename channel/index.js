@@ -1,6 +1,4 @@
-/* eslint-disable */
 const axios = require("axios")
-
 const EVENT_OBJ = {}
 
 const poll = (resolve) => {
