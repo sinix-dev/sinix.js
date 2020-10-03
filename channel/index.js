@@ -1,15 +1,13 @@
-/* eslint-disable */
 const axios = require("axios")
-
 const EVENT_OBJ = {}
 
 const poll = (resolve) => {
   axios.post("http://localhost:41431/health")
-    .then((res) => {
+    .then(() => {
 
       resolve()
     })
-    .catch((err) => {
+    .catch(() => {
       setTimeout(() => {
         poll(resolve)
       }, 1430)
@@ -37,7 +35,7 @@ const connect = () => {
   return socket
 }
 
-const setup = new Promise((resolve, reject) => {
+const setup = new Promise((resolve) => {
   poll(async () => {
     await register()
 
@@ -58,7 +56,7 @@ const setup = new Promise((resolve, reject) => {
 })
 
 const listen = (evnt, cb) => {
-  setup.then((socket) => {
+  setup.then(() => {
     EVENT_OBJ[evnt] = cb
   })
 }
