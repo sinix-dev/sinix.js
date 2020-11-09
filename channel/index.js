@@ -36,7 +36,7 @@ const connect = () => {
 }
 
 const setup = new Promise((resolve) => {
-  poll(async () => {
+  poll(async() => {
     await register()
 
     const socket = connect()
