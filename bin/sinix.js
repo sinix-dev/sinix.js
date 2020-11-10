@@ -3,8 +3,8 @@
 const fs = require("fs")
 const path = require("path")
 const tmp = require("tmp")
-const archiver = require('archiver')
-const evaluation = require('../package.json')
+const archiver = require("archiver")
+const evaluation = require("../package.json")
 
 const [,, ... args] = process.argv
 const CONF_PATH = path.join(process.cwd(), "sinix.config.js")
@@ -94,7 +94,7 @@ const pack = () => {
     fs.writeFileSync("sinix.manifest.json", sinixJson)
 
     archive.glob("**", {
-      ignore: ['node_modules/**', 'release/**']
+      ignore: ["node_modules/**", "release/**"]
     })
 
     process.chdir("../")
