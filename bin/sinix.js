@@ -30,7 +30,6 @@ const pack = () => {
 
   const config = require(CONF_PATH)
 
-
   if (!fs.existsSync("release")){
     fs.mkdirSync("release")
   }
