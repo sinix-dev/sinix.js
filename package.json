@@ -1,12 +1,11 @@
 {
-  "name": "sinix-example",
+  "name": "sinix",
   "version": "0.1.6",
   "repository": "https://github.com/sinix-dev/sinix.js",
   "description": "",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "sinix": "sinix",
     "lint:fix": "eslint . --fix"
   },
   "bin": {
@@ -17,7 +16,6 @@
   "dependencies": {
     "archiver": "^5.0.0",
     "axios": "^0.20.0",
-    "sinix": "^0.1.6",
     "tmp": "^0.2.1"
   },
   "devDependencies": {
