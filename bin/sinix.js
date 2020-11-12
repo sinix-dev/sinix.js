@@ -4,11 +4,13 @@ const fs = require("fs")
 const path = require("path")
 const tmp = require("tmp")
 const archiver = require("archiver")
+const { version } = require("../package.json")
 
 const [,, ... args] = process.argv
 const CONF_PATH = path.join(process.cwd(), "sinix.config.js")
 const PACK_PATH = path.join(process.cwd(), "package.json")
 
+console.log(`sinix.js v${version}`)
 
 const pack = () => {
   if (!fs.existsSync(PACK_PATH)){
@@ -40,7 +42,6 @@ const pack = () => {
 
     output.on("close", () => {
       console.log(archive.pointer() + " total bytes")
-
       const name = sinixJsonObj.slug.replace(" ", "-")
 
       fs.copyFile(tmp_path, `release/${name}.dext`, function(err){
@@ -81,7 +82,6 @@ const pack = () => {
       title: config.title ? config.title : packageJsonObj.name,
       slug: `${packageJsonObj.name}-v${packageJsonObj.version}`
     }
-
     const sinixJson = JSON.stringify(sinixJsonObj, null, 2)
 
     process.chdir(config.distDir)
