@@ -4,13 +4,13 @@ const fs = require("fs")
 const path = require("path")
 const tmp = require("tmp")
 const archiver = require("archiver")
-const evaluation = require("../package.json")
+const { version } = require("../package.json")
 
 const [,, ... args] = process.argv
 const CONF_PATH = path.join(process.cwd(), "sinix.config.js")
 const PACK_PATH = path.join(process.cwd(), "package.json")
 
-console.log("sinix.js v%version%".replace("%version%", evaluation.version))
+console.log(`sinix.js v${version}`)
 
 const pack = () => {
   if (!fs.existsSync(PACK_PATH)){
