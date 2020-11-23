@@ -4,7 +4,7 @@
 const axios = require("axios")
 /**
  * Store User events
- * @type {Object} 
+ * @type {Object}
  */
 const EVENT_OBJ = {}
 
@@ -17,7 +17,7 @@ const poll = (resolve) => {
    * Making async POST request to check server status
    */
   axios.post("http://localhost:41431/health")
- 
+
     .then(() => {
     /**
     * Resolving value of Promise object returned after making POST request
@@ -39,7 +39,7 @@ const poll = (resolve) => {
  */
 const register = () => {
   return new Promise((resolve, reject) => {
-   
+
     const params = new URLSearchParams()
     /**
      * Add 'username' and 'sinix' to create a unique url for a user
@@ -80,12 +80,12 @@ const setup = new Promise((resolve) => {
     const socket = connect()
     /**
      * Listen to response from server
-     * @param {*} resp 
+     * @param {*} resp
      */
     socket.onmessage = (resp) => {
       let { data } = resp
       /**
-       * Parse data from 'resp' into JSON format. 
+       * Parse data from 'resp' into JSON format.
        */
       data = JSON.parse(data)
 
@@ -101,7 +101,7 @@ const setup = new Promise((resolve) => {
 /**
  * Listen to user events on Joystick
  * @param {*} evnt -events happening on server
- * @param {*} cb 
+ * @param {*} cb
  */
 const listen = (evnt, cb) => {
   setup.then(() => {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Loading the 'fs', 'path', 'tmp', 'archiver' node modules 
+ * Loading the 'fs', 'path', 'tmp', 'archiver' node modules
  */
 const fs = require("fs")
 const path = require("path")
@@ -25,7 +25,7 @@ console.log(`sinix.js v${version}`)
  */
 const pack = () => {
   /**
-   * Initialize a Node project if path to 'package.json' does not exist 
+   * Initialize a Node project if path to 'package.json' does not exist
    */
   if (!fs.existsSync(PACK_PATH)){
     console.log("Not a Node project.")
@@ -34,7 +34,7 @@ const pack = () => {
 `)
   }
   /**
-   * Check if a Sinix project is initialized or not 
+   * Check if a Sinix project is initialized or not
    */
   if (!fs.existsSync(CONF_PATH)){
     console.log("Not a Sinix application.")
@@ -53,7 +53,7 @@ const pack = () => {
     fs.mkdirSync("release")
   }
   /**
-   * @returns {void} 
+   * @returns {void}
    */
   tmp.file((err, tmp_path) => {
     if (err) throw err
@@ -131,7 +131,7 @@ const pack = () => {
   })
 }
 /**
- * @description Initializing 'distDir' value for 'sinix.config.js' 
+ * @description Initializing 'distDir' value for 'sinix.config.js'
  */
 const init = () => {
   const configObj = {
