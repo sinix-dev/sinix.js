@@ -113,7 +113,8 @@ const pack = () => {
       name: packageJsonObj.name,
       version: packageJsonObj.version,
       title: config.title ? config.title : packageJsonObj.name,
-      slug: `${packageJsonObj.name}-v${packageJsonObj.version}`
+      slug: `${packageJsonObj.name}-v${packageJsonObj.version}`,
+      window: config.window
     }
     const sinixJson = JSON.stringify(sinixJsonObj, null, 2)
 
@@ -135,7 +136,11 @@ const pack = () => {
  */
 const init = () => {
   const configObj = {
-    "distDir": "dist/"
+    distDir: "dist/",
+    window: {
+      width: 1000,
+      height: 600
+    }
   }
 
   const config = JSON.stringify(configObj, null, 2)
