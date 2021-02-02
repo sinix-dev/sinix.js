@@ -1,9 +1,9 @@
 /**
- * Loading "db" and "remote" modules
+ * Loading "db" and "channel" modules
  * @type {Object}
  */
 const db = require("./db")
-const remote = require("./remote")
+const channel = require("./channel")
 
 /**
  * Exporting "db" and "remote" modules
@@ -11,5 +11,5 @@ const remote = require("./remote")
  */
 module.exports = {
   db,
-  remote
+  channel
 }
