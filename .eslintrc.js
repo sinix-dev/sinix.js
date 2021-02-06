@@ -1,7 +1,4 @@
 module.exports = {
-  "parserOptions": {
-    "ecmaVersion": 12
-  },
   "rules": {
     "semi": ["error", "never"],
     "array-bracket-spacing": [
@@ -27,16 +24,15 @@ module.exports = {
         "afterColon": true
       }
     ],
-    "keyword-spacing": "off",
     "quotes": ["error", "double"],
-    "camelcase": "off",
-    "no-console": "off",
     "space-before-function-paren": ["error", "never"],
     "space-before-blocks": ["error", "never"],
     "prefer-promise-reject-errors": "off"
   },
   "env": {
-    "node": false
+    "node": true,
+    "es2021": true,
+    "browser": true,
   },
   "extends": "eslint:recommended"
 }
